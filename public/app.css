@@ -1,0 +1,12 @@
+body {
+    background: gray;
+    color: #222222;
+    max-width: 600px;
+    margin: auto;
+}
+
+article:not(:last-child) {
+    border-bottom: #5b5b5b;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
