@@ -1,5 +1,4 @@
 @props(['trigger'])
-
 <div x-data="{ show: false }" @click.away="show = false">
 
     <button @click="show = ! show"
@@ -19,7 +18,8 @@
 
     </button>
 
-    <div x-show="show" x-transition class="py-2 absolute bg-gray-100 rounded-xl w-full mt-2 z-50"
+    <div x-show="show" x-transition
+        class="py-2 absolute bg-gray-100 rounded-xl w-full mt-2 z-50 overflow-auto max-h-52 scrollbar-thin scrollbar-thumb-gray-500 scollbar-track-gray-200"
         style="display: none">
         {{ $slot }}
     </div>

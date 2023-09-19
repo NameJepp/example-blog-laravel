@@ -20,10 +20,10 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $title = fake()->unique()->words(3, true),
+            'title' => $title = fake()->unique()->words(5, true),
             'slug' => Str::slug($title),
-            'excerpt' => fake()->paragraph,
-            'body' => fake()->paragraphs(4, true),
+            'excerpt' => '<p>' . implode('</p><p>', fake()->paragraphs(2)) . '</p>',
+            'body' => '<p>' . implode('</p><p>', fake()->paragraphs(6)) . '</p>',
             'category_id' => Category::factory(),
             'user_id' => User::factory(),
         ];
