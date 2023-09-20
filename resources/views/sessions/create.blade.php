@@ -1,9 +1,15 @@
 <x-layout>
-    <x-form-layout name="Log In!" action="/login">
+    <section class="px-6 py-8">
+        <x-forms.layout name="Log In!" action="/login" class="max-w-lg mx-auto mt-10 p-6">
 
-        <x-form-field name="email" type="email" />
+            <x-forms.field name="email" type="email" />
 
-        <x-form-field name="password" type="password" keepOld="false" />
+            <x-forms.field name="password" type="password" keepOld="false" />
 
-    </x-form-layout>
+            <x-button>Log in</x-button>
+
+            <x-forms.errors />
+
+        </x-forms.layout>
+    </section>
 </x-layout>

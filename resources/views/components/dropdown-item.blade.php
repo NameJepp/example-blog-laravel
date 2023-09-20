@@ -8,6 +8,6 @@
     }
 @endphp
 
-<a {{ $attributes(['class' => $classes]) }}>
+<a {{ $attributes->merge(['class' => $classes]) }}>
     {{ $slot }}
 </a>

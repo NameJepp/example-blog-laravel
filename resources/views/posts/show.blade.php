@@ -50,6 +50,7 @@
                     </p>
                 </div>
             </div>
+            <x-posts.comments-section :post="$post" />
         </article>
     </main>
 </x-layout>
