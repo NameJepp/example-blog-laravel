@@ -9,7 +9,7 @@
                 <h2 class="ml-4">Want to participate?</h2>
             </header>
 
-            <x-forms.text-area name="body" />
+            <x-forms.textarea name="body" placeholder="Whats on your mind?" />
             <x-forms.errors />
 
             <footer class="flex justify-end pt-4">

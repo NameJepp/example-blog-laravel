@@ -1,4 +1,4 @@
-@props(['name', 'type' => 'text', 'keepOld' => true])
+@props(['name', 'type' => 'text', 'keepOld' => true, 'styling' => ''])
 
 @php
     $keepOld = $keepOld == 'true' ? old($name) : null;
@@ -15,8 +15,8 @@
         @endif
     </label>
 
-    <input class="border border-gray-400 p-2 w-full" name="{{ $name }}" id="{{ $name }}"
-        value="{{ $keepOld }}" required
+    <input class="{{ $styling }} border border-gray-400 p-2 w-full" name="{{ $name }}"
+        id="{{ $name }}" value="{{ $keepOld }}" required
         @if ($type === 'password') :type="show ? 'text' : 'password'"
         @else type="{{ $type }}" @endif>
 
