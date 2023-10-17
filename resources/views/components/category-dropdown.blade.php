@@ -1,5 +1,5 @@
 <div>
-    <x-dropdown>
+    <x-dropdown styling="pl-3 pr-9">
         <x-slot name="trigger">
             {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'Categories' }}
         </x-slot>

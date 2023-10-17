@@ -1,4 +1,4 @@
-@props(['name', 'type' => 'text', 'keepOld' => true, 'styling' => ''])
+@props(['name', 'type' => 'text', 'keepOld' => true, 'styling' => '', 'required' => true])
 
 @php
     $keepOld = $keepOld == 'true' ? old($name) : null;
@@ -15,12 +15,11 @@
         @endif
     </label>
 
-    <input class="{{ $styling }} border border-gray-400 p-2 w-full" name="{{ $name }}"
-        id="{{ $name }}" value="{{ $keepOld }}" required
+    <input class="{{ $styling }} border border-gray-200 p-2 w-full rounded" name="{{ $name }}"
+        id="{{ $name }}" @if ($required == 'true') required @endif
+        {{ $attributes(['value' => $keepOld]) }}
         @if ($type === 'password') :type="show ? 'text' : 'password'"
         @else type="{{ $type }}" @endif>
 
-    @error($name)
-        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-    @enderror
+    <x-forms.error name="{{ $name }}" />
 </div>

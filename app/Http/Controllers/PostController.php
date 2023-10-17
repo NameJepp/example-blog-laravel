@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -25,9 +26,7 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create', [
-            'categories' => Category::all()
-        ]);
+        return view('admin.posts.create');
     }
 
     public function store()
@@ -38,14 +37,14 @@ class PostController extends Controller
             'excerpt' => 'required',
             'body' => 'required',
             'thumbnail' => 'required|image',
-            'category_id' => 'required|exists:categories,id'
+            'category_id' => ['required', Rule::exists('categories', 'id')]
         ]);
 
         $attributes['user_id'] = auth()->id();
-        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnail');
 
         Post::create($attributes);
 
-        return redirect('/');
+        return redirect("posts/{$attributes['slug']}");
     }
 }

@@ -15,8 +15,12 @@ class Post extends Model
         'title',
         'slug',
         'excerpt',
-        'body'
+        'body',
+        'thumbnail',
+        'category_id',
+        'user_id',
     ];
+
     protected $with = ['category', 'author'];
 
     public function scopeFilter($query, array $filters)

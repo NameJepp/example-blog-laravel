@@ -14,7 +14,9 @@
     @endif
 
     <label for="{{ $name }}" class="sr-only">{{ $name }}</label>
-    <textarea name="{{ $name }}" id="{{ $name }}"
+    <textarea name="{{ $name }}" id="{{ $name }}" {{ $attributes }}
         class="w-full text-sm p-2 focus:outline-none border border-gray-200 rounded-xl focus:ring"
-        rows="{{ $rows }}}}" placeholder="{{ $placeholder }}" required>{{ $keepOld }}</textarea>
+        rows="{{ $rows }}}}" placeholder="{{ $placeholder }}" required>{{ $slot ?? $keepOld }}</textarea>
+
+    <x-forms.error name="{{ $name }}" />
 </div>

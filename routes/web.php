@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
@@ -23,5 +24,10 @@ Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
 Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
+Route::post('/admin/posts', [PostController::class, 'store'])->middleware('admin');
 Route::get('/admin/posts/create', [PostController::class, 'create'])->middleware('admin');
-Route::post('/admin/posts/create', [PostController::class, 'store'])->middleware('admin');
+
+Route::get('/admin/posts', [AdminPostController::class, 'index'])->middleware('admin');
+Route::get('/admin/posts/{post}/edit', [AdminPostController::class, 'edit'])->middleware('admin');
+Route::patch('/admin/posts/{post}', [AdminPostController::class, 'update'])->middleware('admin');
+Route::delete('/admin/posts/{post}', [AdminPostController::class, 'destroy'])->middleware('admin');
